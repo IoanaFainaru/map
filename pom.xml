@@ -95,57 +95,57 @@
 					<runOrder>alphabetical</runOrder>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-						<configuration>
-							<!-- Sets the VM argument line used when integration tests are run. -->
-							<argLine>${failsafeArgLine}</argLine>
-							<includes>
-								<include>**/*IT.java</include>
-							</includes>
-							<runOrder>alphabetical</runOrder>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!--<plugin>-->
+				<!--<artifactId>maven-failsafe-plugin</artifactId>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<goals>-->
+							<!--<goal>integration-test</goal>-->
+							<!--<goal>verify</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--&lt;!&ndash; Sets the VM argument line used when integration tests are run. &ndash;&gt;-->
+							<!--<argLine>${failsafeArgLine}</argLine>-->
+							<!--<includes>-->
+								<!--<include>**/*IT.java</include>-->
+							<!--</includes>-->
+							<!--<runOrder>alphabetical</runOrder>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-test-source</id>
-						<phase>process-test-sources</phase>
-						<goals>
-							<goal>add-test-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/test/groovy</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>add-test-source</id>-->
+						<!--<phase>process-test-sources</phase>-->
+						<!--<goals>-->
+							<!--<goal>add-test-source</goal>-->
+						<!--</goals>-->
+						<!--<configuration>-->
+							<!--<sources>-->
+								<!--<source>src/test/groovy</source>-->
+							<!--</sources>-->
+						<!--</configuration>-->
+					<!--</execution>-->
+				<!--</executions>-->
 			</plugin>
 
 			<!-- The gmavenplus plugin is used to compile Groovy code -->
 			<plugin>
 				<groupId>org.codehaus.gmavenplus</groupId>
 				<artifactId>gmavenplus-plugin</artifactId>
-				<version>${gmavenplus.plugin.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>addTestSources</goal>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>1.6</version>
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<goals>-->
+							<!--<goal>addTestSources</goal>-->
+							<!--<goal>testCompile</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
 			</plugin>
 		</plugins>
 	</build>
