@@ -18,6 +18,11 @@ public class UserController {
         this.userService = Objects.requireNonNull(userService, "userService must not be null");
     }
 
+    @GetMapping("/{username}")
+    public UserModel getUser(@PathVariable("username") final String username) {
+        return userService.getUserCredentials(username);
+    }
+
     @PostMapping
     public ResponseEntity<UserModel> addUser(@RequestBody final UserModel userModel) {
         return ResponseEntity.ok(userService.save(userModel));

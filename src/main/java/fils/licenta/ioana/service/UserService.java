@@ -1,6 +1,8 @@
 package fils.licenta.ioana.service;
 
 import fils.licenta.ioana.exception.EntityAlreadyExistsException;
+import fils.licenta.ioana.exception.EntityNotFoundException;
+import fils.licenta.ioana.mapper.UserMapper;
 import fils.licenta.ioana.model.UserModel;
 import fils.licenta.ioana.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,12 @@ public class UserService {
 //        userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
         checkIfUsernameAlreadyExists(userModel);
         return toModel(userRepository.save(toEntity(userModel)));
+    }
+
+    public UserModel getUserCredentials(final String username) {
+        return userRepository.findByUsername(username)
+                .map(UserMapper::toModel)
+                .orElseThrow(() -> new EntityNotFoundException("This username does not exist!"));
     }
 
     private void checkIfUsernameAlreadyExists(final UserModel userModel) {
